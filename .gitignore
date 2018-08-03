@@ -1,6 +1,2 @@
-wwwroot/**
-!wwwroot/.gitkeep
-typings/**
 node_modules
-yarn.lock
-.vscode
+build
