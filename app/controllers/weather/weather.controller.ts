@@ -3,17 +3,14 @@
 import fs from "fs";
 import { Router, Request, Response, json } from "express";
 
-import { readWeatherDataBase, readCountriesDataBase } from "../../data/export-data";
+import { readWeatherDataBase, readCountriesDataBase } from "../../database.helper";
+import { Location } from "../../data/contracts/location-contracts";
 import "../../data/contracts/weather-data-contracts";
 
-interface Location {
-    lat: number;
-    lon: number;
-}
 const router: Router = Router();
 
 router.get("/", (req: Request, res: Response) => {
-    res.send("No city name received :( ");
+    res.send("No city name received");
 });
 
 router.get("/cityname/:name", (req: Request, res: Response) => {
@@ -22,7 +19,7 @@ router.get("/cityname/:name", (req: Request, res: Response) => {
     if (weatherdata.some(x => (x.name === name))) {
         res.json(weatherdata.find(x => (x.name === name)));
     } else {
-        res.send(" No city found ");
+        res.send("No city found");
     }
 });
 
@@ -32,7 +29,7 @@ router.get("/code/:code", (req: Request, res: Response) => {
     if (countriesdata.some(x => (x.alpha2Code === code))) {
         res.json(readCountriesDataBase().find(x => (x.alpha2Code === code)));
     } else {
-        res.send(" No country found ");
+        res.send("No country found");
     }
 });
 
@@ -42,7 +39,7 @@ router.get("/coords/coords", (req: Request, res: Response) => {
     if (weatherdata.some((x => (x.coord.lon === Number(lon) && x.coord.lat === Number(lat))))) {
         res.json(weatherdata.find(x => (x.coord.lon === Number(lon) && x.coord.lat === Number(lat))));
     } else {
-        res.send(" No city found");
+        res.send("No city found");
     }
 });
 
