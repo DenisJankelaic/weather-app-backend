@@ -1,2 +1,2 @@
-# moviesBack
-Movies backend for frontend
+# WeatherBack
+Weather backend for frontend
