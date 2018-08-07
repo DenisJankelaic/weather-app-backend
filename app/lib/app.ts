@@ -2,12 +2,11 @@ import * as express from "express";
 import * as bodyParser from "body-parser";
 import * as mongoose from "mongoose";
 import { Routes } from "./routes/weather-routes";
-
+import { mongoUrl } from "./shared/db-url";
 class App {
 
     public app: express.Application;
     public routePrv: Routes = new Routes();
-    public mongoUrl: string = "mongodb+srv://admin:admin@internshipdb-gkw0x.mongodb.net/cities?retryWrites=tru";
 
     constructor() {
         this.app = express();
@@ -18,7 +17,7 @@ class App {
 
     private mongoSetup(): void {
         mongoose.Promise = global.Promise;
-        mongoose.connect(this.mongoUrl);
+        mongoose.connect(mongoUrl);
     }
 
     private config(): void {
