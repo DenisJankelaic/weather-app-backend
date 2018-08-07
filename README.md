@@ -1,1 +1,2 @@
-# weather-app-backend
+# moviesBack
+Movies backend for frontend

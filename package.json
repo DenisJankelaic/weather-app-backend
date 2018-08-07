@@ -1,10 +1,13 @@
 {
-  "name": "weather-backend",
+  "name": "express-ts",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc"
+    "build": "tsc",
+    "dev": "ts-node ./app/lib/server.ts",
+    "start": "nodemon ./dist/server.js",
+    "prod": "npm run build && npm run start"
   },
   "keywords": [],
   "author": "",
@@ -12,12 +15,14 @@
   "dependencies": {
     "@types/es6-shim": "^0.31.37",
     "@types/express": "^4.16.0",
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "mongoose": "^5.2.7",
+    "tslint": "^5.11.0",
     "typescript": "^3.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.18.3",
-    "simplr-tslint": "^1.0.0-alpha.14",
-    "tslint": "^5.11.0"
+    "simplr-tslint": "0.0.1"
   }
 }
